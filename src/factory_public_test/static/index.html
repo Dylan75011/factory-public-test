@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Factory Ops Board</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Management System</p>
+          <h1>Factory Ops Board</h1>
+        </div>
+        <button id="refresh-button" class="button button-secondary" type="button">Refresh</button>
+      </header>
+
+      <section class="metrics" aria-label="Dashboard totals">
+        <article class="metric">
+          <span class="metric-label">Projects</span>
+          <strong id="total-projects">0</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">Open Tasks</span>
+          <strong id="open-tasks">0</strong>
+        </article>
+        <article class="metric metric-alert">
+          <span class="metric-label">Blocked</span>
+          <strong id="blocked-tasks">0</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">Points</span>
+          <strong id="total-points">0</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="panel project-panel">
+          <div class="panel-heading">
+            <h2>Projects</h2>
+          </div>
+          <div id="project-list" class="project-list"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <h2>Tasks</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>Project</th>
+                  <th>Owner</th>
+                  <th>Priority</th>
+                  <th>Status</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody id="task-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="forms">
+        <form id="project-form" class="panel form-panel">
+          <div class="panel-heading">
+            <h2>New Project</h2>
+          </div>
+          <label>
+            Name
+            <input name="name" required maxlength="80" placeholder="Customer rollout">
+          </label>
+          <label>
+            Owner
+            <input name="owner" required maxlength="40" placeholder="Mia">
+          </label>
+          <label>
+            Description
+            <textarea name="description" rows="3" maxlength="180" placeholder="Short project note"></textarea>
+          </label>
+          <button class="button" type="submit">Create Project</button>
+        </form>
+
+        <form id="task-form" class="panel form-panel">
+          <div class="panel-heading">
+            <h2>New Task</h2>
+          </div>
+          <label>
+            Project
+            <select name="project_id" id="task-project-select" required></select>
+          </label>
+          <label>
+            Title
+            <input name="title" required maxlength="90" placeholder="Prepare release notes">
+          </label>
+          <div class="form-grid">
+            <label>
+              Assignee
+              <input name="assignee" maxlength="40" placeholder="Lee">
+            </label>
+            <label>
+              Priority
+              <select name="priority">
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="low">Low</option>
+              </select>
+            </label>
+            <label>
+              Points
+              <input name="points" type="number" min="1" max="21" value="1">
+            </label>
+          </div>
+          <button class="button" type="submit">Create Task</button>
+        </form>
+      </section>
+    </main>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
+
